@@ -13,11 +13,9 @@
         <div class="container mt-3">
             <h1 class="text-center">ToDo List</h1>
             <ul class="list-group">
-                <li class="list-group-item">An item</li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li>
-                <li class="list-group-item">A fourth item</li>
-                <li class="list-group-item">And a fifth one</li>
+                <li class="list-group-item" v-for="toDo in serverList">
+                    {{toDo.text}}
+                </li>
             </ul>
             <div class="text-center">
                 <label class="m-3 fw-bold" for="newTodoItem">Inserisci nuova task</label>
