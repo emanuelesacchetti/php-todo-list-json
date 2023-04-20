@@ -4,7 +4,8 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            serverList: []
+            serverList: [],
+            newTodoItem: ''
         }
     },
     methods: {  
@@ -15,6 +16,21 @@ createApp({
                     this.serverList = response.data;
                     console.log('ciao');
                 })
+        },
+        //chiamata a axios e gli passo il valore di newTodoItem (quindi del v-model dell'input)
+        addNewTask(){
+            const data = {
+                newTodoItem : this.newTodoItem
+            };
+            axios.post('server.php', data, 
+            {
+                headers: {'Content-Type' : 'multipart/form-data'}
+            }).then(response => {
+                //ricevo indietro l'array del server col il nuovo valore aggiunto e lo metto nel serverList
+                this.serverList = response.data;
+                this.newTodoItem = '';
+                console.log(this.serverList);
+            });
         }
     },
     mounted() {

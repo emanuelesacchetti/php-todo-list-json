@@ -13,7 +13,7 @@
         <div class="container mt-3">
             <h1 class="text-center">ToDo List</h1>
             <ul class="list-group">
-                <li class="list-group-item" v-for="toDo in serverList">
+                <li class="list-group-item" v-for="toDo in serverList" :class=(toDo.done == true) ? '' : >
                     {{toDo.text}}
                 </li>
             </ul>

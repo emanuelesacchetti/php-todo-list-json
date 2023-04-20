@@ -22,3 +22,7 @@
     //lo trasformo in un file json
     header('Content-Type: application/json');
     echo json_encode($todoList);
+
+    if(isset($_POST['newTodoItem'])){
+        $serverList[] = $_POST['newTodoItem'];
+    }
