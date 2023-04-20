@@ -13,13 +13,13 @@
         <div class="container mt-3">
             <h1 class="text-center">ToDo List</h1>
             <ul class="list-group">
-                <li class="list-group-item" v-for="toDo in serverList" :class=(toDo.done == true) ? '' : >
+                <li class="list-group-item" v-for="toDo in serverList">
                     {{toDo.text}}
                 </li>
             </ul>
             <div class="text-center">
                 <label class="m-3 fw-bold" for="newTodoItem">Inserisci nuova task</label>
-                <input class="m-3" type="text" name="newTodoItem" id="newTodoItem">
+                <input class="m-3" type="text" v-model="newTodoItem" id="newTodoItem">
             </div>
             <div class="text-center">
                 <button class="btn btn-primary" type="submit" @click='addNewTask'>Aggiungi Task</button>

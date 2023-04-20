@@ -11,11 +11,10 @@ createApp({
     methods: {  
         //faccio una chiamata axios al mio server e metto i dati dentro serverList            
         callAxios(){
-                axios.get('server.php')
-                .then(response => {
-                    this.serverList = response.data;
-                    console.log('ciao');
-                })
+            axios.get('server.php')
+            .then(response => {
+                this.serverList = response.data;
+            })
         },
         //chiamata a axios e gli passo il valore di newTodoItem (quindi del v-model dell'input)
         addNewTask(){
@@ -29,7 +28,6 @@ createApp({
                 //ricevo indietro l'array del server col il nuovo valore aggiunto e lo metto nel serverList
                 this.serverList = response.data;
                 this.newTodoItem = '';
-                console.log(this.serverList);
             });
         }
     },
