@@ -1,23 +1,4 @@
 <?php
-    /*creo l'array associativo
-    $todoList = [
-        [
-            'text'=> 'Fare la spesa',
-            'done'=> false
-        ],
-        [
-            'text'=> 'Preparare la cena',
-            'done'=> false
-        ],
-        [
-            'text'=> 'Allenarsi',
-            'done'=> false
-        ],
-        [
-            'text'=> 'Guardare la partita',
-            'done'=> false
-        ]
-    ];*/
 
     if(file_exists('database.json')){
 
@@ -28,29 +9,29 @@
         $listaArray = json_decode($listaJson, true);
 
 
-        //PER ELIMINARE UNA TASK
-        if(isset($_POST['index'])){
-            $iDelete = $_POST['index'];
-            unset($listaArray[$iDelete]);
+                    //PER ELIMINARE UNA TASK
+                    if(isset($_POST['index'])){
+                        $iDelete = $_POST['index'];
+                        unset($listaArray[$iDelete]);
 
-            //trasformo $listaArray in una stringa ( Json )
-            $listaString = json_encode($listaArray);
+                        //trasformo $listaArray in una stringa ( Json )
+                        $listaString = json_encode($listaArray);
 
-            //creo il file database.json (se non c'è) e dentro ci metto la stringa  di $listaString
-            file_put_contents('database.json', $listaString);
-        }
+                        //creo il file database.json (se non c'è) e dentro ci metto la stringa  di $listaString
+                        file_put_contents('database.json', $listaString);
+                    }
         
-        //PER INVERTIRE VALORE DI UNA CHIAVE DELLA TASK
-        if(isset($_POST['i'])){
-            $iToggle = $_POST['i'];
-            $listaArray[$iToggle]['done'] = !$listaArray[$iToggle]['done'];  
-            
-            //trasformo $listaArray in una stringa ( Json )
-            $listaString = json_encode($listaArray);
-            
-            //creo il file database.json (se non c'è) e dentro ci metto la stringa  di $listaString
-            file_put_contents('database.json', $listaString);
-        }
+                    //PER INVERTIRE VALORE DI UNA CHIAVE DELLA TASK
+                    if(isset($_POST['i'])){
+                        $iToggle = $_POST['i'];
+                        $listaArray[$iToggle]['done'] = !$listaArray[$iToggle]['done'];  
+                        
+                        //trasformo $listaArray in una stringa ( Json )
+                        $listaString = json_encode($listaArray);
+                        
+                        //creo il file database.json (se non c'è) e dentro ci metto la stringa  di $listaString
+                        file_put_contents('database.json', $listaString);
+                    }
 
     }else{
         $listaArray = [];
