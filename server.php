@@ -27,6 +27,8 @@
         //trasformo la stringa in un array associativo
         $listaArray = json_decode($listaJson, true);
 
+
+        //PER ELIMINARE UNA TASK
         if(isset($_POST['index'])){
             $iDelete = $_POST['index'];
             unset($listaArray[$iDelete]);
@@ -38,7 +40,7 @@
             file_put_contents('database.json', $listaString);
         }
         
-
+        //PER INVERTIRE VALORE DI UNA CHIAVE DELLA TASK
         if(isset($_POST['i'])){
             $iToggle = $_POST['i'];
             $listaArray[$iToggle]['done'] = !$listaArray[$iToggle]['done'];  

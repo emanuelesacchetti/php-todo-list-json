@@ -38,7 +38,6 @@ createApp({
                 headers: {'Content-Type' : 'multipart/form-data'}
             }).then(response => {
                 this.serverList = response.data;
- 
             });
         },
         eliminaTask(indice){
@@ -48,10 +47,7 @@ createApp({
             axios.post('server.php', data, {
                 headers: {'Content-Type' : 'multipart/form-data'}
             }).then(response => { 
-                console.log(response.data);
-
                 this.serverList = response.data;
- 
             });
         }
     },
