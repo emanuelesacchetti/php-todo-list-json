@@ -1,1 +1,6 @@
-[{"text":"ciao","done":false},[{"text":"pippo","done":false}]]
+[
+{"text":"ciao","done":false},
+{"text":"pippo","done":false},
+{"text":"pluto","done":false},
+{"text":"mario","done":false}
+]

@@ -35,19 +35,16 @@
 
 
     if(isset($_POST['newTodoItem'])){
-        $item[] = [
-                        'text' => $_POST['newTodoItem'],
-                        'done' => false
-                    ];
+        $item = ['text' => $_POST['newTodoItem'],'done' => false];
         
         //aggiungo $item a $listaArray
         $listaArray[] = $item;
 
         //trasformo $listaArray in una stringa ( Json )
-        $listaArray = json_encode($listaArray);
+        $listaString = json_encode($listaArray);
         
-        //creo il file database.json e dentro ci metto la stringa  di $todoListStringa
-        file_put_contents('database.json', $listaArray);
+        //creo il file database.json (se non c'è) e dentro ci metto la stringa  di $listaString
+        file_put_contents('database.json', $listaString);
     }
 
 
@@ -68,7 +65,7 @@
         
         3- (nel percorso EVITA la condizione [IF ho un valore in $_POST])
 
-        4- con qui valori presi, e messi dentro una variabile in main.js,
+        4- con quei valori presi, e messi dentro una variabile in main.js,
         l'html costruirà la lista in modo dinamico.
 
     ITER CON NUOVA TASK
@@ -83,15 +80,22 @@
         viene creato database.json, 
         l'array viene messo nel database.json sottoforma di stringa (Json)
         
-        4- poi di nuovo con qui valori presi, e messi dentro una variabile in main.js,
+        4- poi di nuovo con quei valori presi, e messi dentro una variabile in main.js,
         l'html costruirà la lista in modo dinamico.
 
     ITER CON NUOVA TASK E DATABASE GIà ESISTENTE
         1- Quando aggiungo una task (cliccando sul bottone) si avvia una funzione
         che con AXIOS POST invia il valore del v-model dell'input a server.php.
 
-        2- ENTRA nella condizione [IF database exist] e prendo ila stringa
+        2- ENTRA nella condizione [IF database exist] e prendo la stringa
         che è contenuta. 
         La decodifico in un array associativo.
 
+        3- ENTRA nella condizione [if ho un valore $_POST] e creo un array associativo
+        che il valore passato in $_POST.
+        L'array (1) viene codificato in Json (stringa) e affidato ad un'altra varibile.
+        La nuova variabile (striga) viene aggiunto nel database.json
+
+        4- poi di nuovo con quei valori presi, e messi dentro una variabile in main.js,
+        l'html costruirà la lista in modo dinamico.
         */
