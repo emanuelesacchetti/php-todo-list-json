@@ -29,6 +29,9 @@ createApp({
                 this.serverList = response.data;
                 this.newTodoItem = '';
             });
+        },
+        cambiaDone(valore){
+            valore = !valore
         }
     },
     mounted() {
