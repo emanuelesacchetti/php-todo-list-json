@@ -15,10 +15,11 @@
         <div class="container mt-3">
             <h1 class="text-center">ToDo List</h1>
             <ul class="list-group">
-                <li class="list-group-item" v-for="(toDo, index) in serverList" 
+                <li class="list-group-item" v-for="(toDo, index) in serverList"
                 :class="(toDo.done)?'text-decoration-line-through': ''">
                     {{toDo.text}}
-                    <button class="btn btn-info" @click="cambiaDone(index)">FATTO</button>
+                    <button class="btn btn-info" @click="cambiaDone(index)">OK</button>
+                    <button class="btn btn-danger" @click="eliminaTask(index)">X</button>
                 </li>
             </ul>
             <div class="text-center">
