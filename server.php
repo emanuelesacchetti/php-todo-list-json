@@ -23,9 +23,21 @@
 
         //riprendo la stringa dentro database.json
         $listaJson = file_get_contents('database.json');
-
+        
         //trasformo la stringa in un array associativo
         $listaArray = json_decode($listaJson, true);
+        
+
+        if(isset($_POST['i'])){
+            $indice = $_POST['i'];
+            $listaArray[$indice]['done'] = !$listaArray[$indice]['done'];  
+            
+            //trasformo $listaArray in una stringa ( Json )
+            $listaString = json_encode($listaArray);
+            
+            //creo il file database.json (se non c'è) e dentro ci metto la stringa  di $listaString
+            file_put_contents('database.json', $listaString);
+        }
 
     }else{
         $listaArray = [];

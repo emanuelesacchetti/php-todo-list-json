@@ -30,8 +30,16 @@ createApp({
                 this.newTodoItem = '';
             });
         },
-        cambiaDone(valore){
-            valore = !valore
+        cambiaDone(indice){
+            const data = {
+                i : indice
+            };
+            axios.post('server.php', data, {
+                headers: {'Content-Type' : 'multipart/form-data'}
+            }).then(response => {
+                this.serverList = response.data;
+ 
+            });
         }
     },
     mounted() {
